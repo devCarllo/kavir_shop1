@@ -53,3 +53,7 @@
 .checkout_pricing_btn:hover {
   background-color: var(--cardBackground-color);
 }
+
+section {
+  padding: 0 5px;
+}

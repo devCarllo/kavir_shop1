@@ -86,3 +86,13 @@
   text-align: center;
   padding: 2px;
 }
+
+@media (max-width: 425px) {
+  .product_container {
+    width: 80%;
+    height: 420px;
+  }
+  .product_image_container {
+    height: 70%;
+  }
+}

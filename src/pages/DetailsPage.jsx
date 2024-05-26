@@ -34,75 +34,82 @@ const DetailsPage = () => {
     <>
       <Layout>
         <section className={styles.details_container}>
-          <div className={styles.details_image_container}>
-            <img
-              className={styles.details_image}
-              src={product?.image}
-              alt={`${product?.title}`}
-            />
-          </div>
-
-          <div className={styles.details_data_container}>
-            <div className={styles.details_title_container}>
-              <h3 className={styles.details_category}>{product?.category}</h3>
-              <h1 className={styles.details_title}>{product?.title}</h1>
+          <div className={styles.details_wrapper}>
+            <div className={styles.details_image_container}>
+              <img
+                className={styles.details_image}
+                src={product?.image}
+                alt={`${product?.title}`}
+              />
             </div>
 
-            <div className={styles.details_rating_container}>
-              <span className={styles.details_rate}>
-                <TiStarFullOutline fill="gold" /> {product?.rating.rate}
-              </span>
-              <span className={styles.details_count}>
-                امتیاز {product?.rating.count} خریدار
-              </span>
-            </div>
+            <div className={styles.details_data_container}>
+              <div className={styles.details_title_container}>
+                <h3 className={styles.details_category}>{product?.category}</h3>
+                <h1 className={styles.details_title}>{product?.title}</h1>
+              </div>
 
-            <p className={styles.details_description}>{product?.description}</p>
+              <div className={styles.details_rating_container}>
+                <span className={styles.details_rate}>
+                  <TiStarFullOutline fill="gold" /> {product?.rating.rate}
+                </span>
+                <span className={styles.details_count}>
+                  امتیاز {product?.rating.count} خریدار
+                </span>
+              </div>
 
-            <div className={styles.details_price_container}>
-              <span className={styles.details_price}>
-                {product?.price}
-                <span style={{ marginLeft: "3px" }}>$</span>
-              </span>
+              <p className={styles.details_description}>
+                {product?.description}
+              </p>
 
-              <div className={styles.details_btn_Container}>
-                {myProduct?.quantity ? (
-                  <span
-                    onClick={() => clickHandler("INCREASE_ITEM")}
-                    className={styles.details_buy_btn}
-                  >
-                    <IoMdAdd fontSize="1.1rem" />
+              <div className={styles.details_price_container}>
+                <div>
+                  <span>قیمت:</span>{" "}
+                  <span className={styles.details_price}>
+                    {product?.price}{" "}
+                    <span style={{ marginLeft: "3px" }}>دلار</span>
                   </span>
-                ) : (
-                  <span
-                    onClick={() => clickHandler("ADD_ITEM")}
-                    className={styles.details_buy_btn_add}
-                  >
-                    خرید
-                  </span>
-                )}
+                </div>
 
-                {myProduct?.quantity > 0 && (
-                  <span className={styles.details_quantity}>
-                    {myProduct.quantity}
-                  </span>
-                )}
-                {myProduct?.quantity === 1 && (
-                  <span
-                    onClick={() => clickHandler("REMOVE_ITEM")}
-                    className={styles.details_buy_btn}
-                  >
-                    <MdDelete fontSize="1.1rem" />
-                  </span>
-                )}
-                {myProduct?.quantity > 1 && (
-                  <span
-                    onClick={() => clickHandler("DECREASE_ITEM")}
-                    className={styles.details_buy_btn}
-                  >
-                    <IoMdRemove fontSize="1.1rem" />
-                  </span>
-                )}
+                <div className={styles.details_btn_Container}>
+                  {myProduct?.quantity ? (
+                    <span
+                      onClick={() => clickHandler("INCREASE_ITEM")}
+                      className={styles.details_buy_btn}
+                    >
+                      <IoMdAdd fontSize="1.1rem" />
+                    </span>
+                  ) : (
+                    <span
+                      onClick={() => clickHandler("ADD_ITEM")}
+                      className={styles.details_buy_btn_add}
+                    >
+                      خرید
+                    </span>
+                  )}
+
+                  {myProduct?.quantity > 0 && (
+                    <span className={styles.details_quantity}>
+                      {myProduct.quantity}
+                    </span>
+                  )}
+                  {myProduct?.quantity === 1 && (
+                    <span
+                      onClick={() => clickHandler("REMOVE_ITEM")}
+                      className={styles.details_buy_btn}
+                    >
+                      <MdDelete fontSize="1.1rem" />
+                    </span>
+                  )}
+                  {myProduct?.quantity > 1 && (
+                    <span
+                      onClick={() => clickHandler("DECREASE_ITEM")}
+                      className={styles.details_buy_btn}
+                    >
+                      <IoMdRemove fontSize="1.1rem" />
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           </div>

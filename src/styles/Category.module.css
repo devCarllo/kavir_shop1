@@ -28,3 +28,9 @@
   background-color: var(--highlight);
   color: var(--cardBackground-color);
 }
+
+@media (max-width: 480px) {
+  .category_container {
+    margin-bottom: 30px;
+  }
+}

@@ -25,3 +25,10 @@
   color: var(--highlight);
   padding: 3px;
 }
+
+@media (max-width: 350px) {
+  .purchase_container {
+    width: 310px;
+    height: 310px;
+  }
+}

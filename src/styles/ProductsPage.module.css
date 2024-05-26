@@ -15,3 +15,21 @@ main {
   align-items: center;
   justify-content: space-between;
 }
+
+main {
+  padding: 0 5px;
+}
+
+@media (max-width: 630px) {
+  .products_container {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 425px) {
+  .products_container {
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}

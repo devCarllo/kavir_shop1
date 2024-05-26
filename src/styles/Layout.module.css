@@ -21,6 +21,7 @@ header {
   cursor: pointer;
 }
 .header_search_title {
+  width: 75px;
   font-size: 1rem;
   padding: 0 5px;
   user-select: none;
@@ -64,4 +65,23 @@ footer {
   margin-top: 50px;
   background-color: var(--cardBackground-color);
   border-radius: 5px 5px 0 0;
+}
+
+@media (max-width: 480px) {
+  .header_title {
+    font-size: 1.5rem;
+    width: 100px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header_basket {
+    padding: 3px;
+  }
+}
+
+@media (max-width: 350px) {
+  .header_title {
+    font-size: 1.2rem;
+  }
 }

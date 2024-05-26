@@ -1,5 +1,9 @@
 .details_container {
   width: 100%;
+  padding: 0 10px;
+}
+.details_wrapper {
+  width: 100%;
   padding: 20px;
   display: flex;
   flex-flow: row nowrap;
@@ -9,7 +13,6 @@
   border: 2px solid var(--cardBackground-color);
   border-radius: 5px;
 }
-
 .details_image_container {
   width: 250px;
   margin-left: 30px;
@@ -47,7 +50,7 @@
 
 .details_rating_container {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -65,6 +68,7 @@
   width: 100%;
   text-align: left;
   margin-bottom: 40px;
+  padding: 5px 10px;
 }
 
 .details_price_container {
@@ -111,4 +115,24 @@
   width: 30px;
   text-align: center;
   padding: 4px;
+}
+
+@media (max-width: 550px) {
+  .details_wrapper {
+    flex-flow: column nowrap;
+  }
+  .details_image_container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .details_data_container {
+    width: 100%;
+  }
+  .details_title_container {
+    width: 100%;
+    padding: 10px 5px;
+    text-align: left;
+  }
 }
