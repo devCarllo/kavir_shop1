@@ -1,0 +1,30 @@
+.category_container {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.category_btn {
+  width: 80px;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1px solid var(--highlight);
+  background-color: var(--cardBackground-color);
+  margin: 10px 5px;
+  cursor: pointer;
+}
+
+.active {
+  width: 80px;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1px solid var(--highlight);
+  margin: 10px 5px;
+  cursor: pointer;
+  background-color: var(--highlight);
+  color: var(--cardBackground-color);
+}

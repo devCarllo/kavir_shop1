@@ -1,0 +1,114 @@
+.details_container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10% auto;
+  border: 2px solid var(--cardBackground-color);
+  border-radius: 5px;
+}
+
+.details_image_container {
+  width: 250px;
+  margin-left: 30px;
+}
+.details_image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.details_data_container {
+  width: calc(100% - 250px);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.details_title_container {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-bottom: 1px solid var(--cardBackground-color);
+}
+.details_category {
+  color: var(--highlight);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: left;
+}
+.details_title {
+  width: 100%;
+  text-align: left;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+.details_rating_container {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+.details_rate {
+  margin-left: 5px;
+}
+.details_count {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.details_description {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.details_price_container {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.details_price {
+  color: #06be06;
+}
+
+.details_buy_btn_add {
+  text-align: center;
+  font-weight: 500;
+  width: 100px;
+  padding: 5px 3px;
+  background-color: var(--highlight);
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.details_btn_Container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.details_buy_btn {
+  width: 60px;
+  text-align: center;
+  background-color: var(--highlight);
+  padding: 5px 3px;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.details_quantity {
+  width: 30px;
+  text-align: center;
+  padding: 4px;
+}

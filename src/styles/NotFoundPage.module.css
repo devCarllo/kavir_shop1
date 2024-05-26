@@ -1,0 +1,28 @@
+.page_404_container {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  margin: 30% auto;
+}
+.number_404 {
+  font-size: 4rem;
+  color: var(--cardBackground-color);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.text_404 {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+.btn_404 {
+  color: var(--cardBackground-color);
+  background-color: var(--highlight);
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}

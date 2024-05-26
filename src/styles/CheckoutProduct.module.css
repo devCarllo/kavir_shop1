@@ -1,0 +1,43 @@
+.checkoutProduct_container {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--cardBackground-color);
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+.checkoutProduct_image_container {
+  width: 100px;
+}
+.checkoutProduct_image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.checkout_btn_Container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.checkout_buy_btn {
+  width: 40px;
+  text-align: center;
+  background-color: var(--highlight);
+  padding: 3px;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.checkout_quantity {
+  width: 25px;
+  text-align: center;
+  padding: 2px;
+}

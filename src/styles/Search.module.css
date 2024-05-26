@@ -1,0 +1,7 @@
+.search_input {
+  background-color: var(--background-color);
+  padding: 5px;
+  margin: 8px 5px 0;
+  color: #fff;
+  font-size: 1rem;
+}
