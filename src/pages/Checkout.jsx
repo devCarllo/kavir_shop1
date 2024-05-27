@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import Layout from "../components/layout/Layout";
 import CheckoutProduct from "../components/modules/CheckoutProduct";
 import { useCart } from "../context/CartProvider";
@@ -6,12 +8,13 @@ import styles from "../styles/Checkout.module.css";
 
 const Checkout = () => {
   const [state, dispatch] = useCart();
+  const navigate = useNavigate();
 
   const checkOutHandler = () => {
     if (state.itemsCounter) {
       dispatch({ type: "CHECKOUT" });
 
-      location.assign("/purchase");
+      navigate("/purchase");
     }
   };
 
