@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "../styles/Purchase.module.css";
 import { useEffect } from "react";
 
 const PurchaseProcess = () => {
   const [second, setSecond] = useState(5);
+  const navigate = useNavigate;
 
   useEffect(() => {
     if (second === 0) return;
@@ -17,7 +19,7 @@ const PurchaseProcess = () => {
     };
   }, [second]);
 
-  if (second === 0) location.assign("/");
+  if (second === 0) navigate("/");
 
   return (
     <>
