@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const PurchaseProcess = () => {
   const [second, setSecond] = useState(5);
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (second === 0) return;
