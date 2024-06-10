@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useProductDetails } from "../context/ProductsProvider";
-import Loader from "../components/helpers/Loader";
-import { useCart } from "../context/CartProvider";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts } from "../features/productsSlice/productsSlice";
+import {
+  addItem,
+  decreaseItem,
+  increaseItem,
+  removeItem,
+} from "../features/cartSlice/cartSlice";
+import { selectCart } from "../app/store";
 
+import Loader from "../components/helpers/Loader";
 import Layout from "../components/layout/Layout";
 
 import styles from "../styles/DetailsPage.module.css";
@@ -14,21 +21,23 @@ import { IoMdRemove } from "react-icons/io";
 
 const DetailsPage = () => {
   const [myProduct, setMyProduct] = useState({});
-  const [state, dispatch] = useCart();
+  const { id } = useParams();
+  const state = useSelector(selectCart);
+  const product = useSelector((store) =>
+    store.products.products.find((item) => item.id === +id)
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
   useEffect(() => {
     const data = state.selectedItems.find((item) => item.id === product.id);
     setMyProduct(data);
   }, [state]);
 
-  const params = useParams();
-  const product = useProductDetails(+params.id);
-
   if (!product) return <Loader />;
-
-  const clickHandler = (data) => {
-    dispatch({ type: data, payload: product });
-  };
 
   return (
     <>
@@ -38,35 +47,35 @@ const DetailsPage = () => {
             <div className={styles.details_image_container}>
               <img
                 className={styles.details_image}
-                src={product?.image}
-                alt={`${product?.title}`}
+                src={product.image}
+                alt={`${product.title}`}
               />
             </div>
 
             <div className={styles.details_data_container}>
               <div className={styles.details_title_container}>
-                <h3 className={styles.details_category}>{product?.category}</h3>
-                <h1 className={styles.details_title}>{product?.title}</h1>
+                <h3 className={styles.details_category}>{product.category}</h3>
+                <h1 className={styles.details_title}>{product.title}</h1>
               </div>
 
               <div className={styles.details_rating_container}>
                 <span className={styles.details_rate}>
-                  <TiStarFullOutline fill="gold" /> {product?.rating.rate}
+                  <TiStarFullOutline fill="gold" /> {product.rating.rate}
                 </span>
                 <span className={styles.details_count}>
-                  امتیاز {product?.rating.count} خریدار
+                  امتیاز {product.rating.count} خریدار
                 </span>
               </div>
 
               <p className={styles.details_description}>
-                {product?.description}
+                {product.description}
               </p>
 
               <div className={styles.details_price_container}>
                 <div>
                   <span>قیمت:</span>{" "}
                   <span className={styles.details_price}>
-                    {product?.price}{" "}
+                    {product.price}{" "}
                     <span style={{ marginLeft: "3px" }}>دلار</span>
                   </span>
                 </div>
@@ -74,14 +83,14 @@ const DetailsPage = () => {
                 <div className={styles.details_btn_Container}>
                   {myProduct?.quantity ? (
                     <span
-                      onClick={() => clickHandler("INCREASE_ITEM")}
+                      onClick={() => dispatch(increaseItem(product))}
                       className={styles.details_buy_btn}
                     >
                       <IoMdAdd fontSize="1.1rem" />
                     </span>
                   ) : (
                     <span
-                      onClick={() => clickHandler("ADD_ITEM")}
+                      onClick={() => dispatch(addItem(product))}
                       className={styles.details_buy_btn_add}
                     >
                       خرید
@@ -95,7 +104,7 @@ const DetailsPage = () => {
                   )}
                   {myProduct?.quantity === 1 && (
                     <span
-                      onClick={() => clickHandler("REMOVE_ITEM")}
+                      onClick={() => dispatch(removeItem(product))}
                       className={styles.details_buy_btn}
                     >
                       <MdDelete fontSize="1.1rem" />
@@ -103,7 +112,7 @@ const DetailsPage = () => {
                   )}
                   {myProduct?.quantity > 1 && (
                     <span
-                      onClick={() => clickHandler("DECREASE_ITEM")}
+                      onClick={() => dispatch(decreaseItem(product))}
                       className={styles.details_buy_btn}
                     >
                       <IoMdRemove fontSize="1.1rem" />

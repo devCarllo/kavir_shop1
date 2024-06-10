@@ -1,21 +1,25 @@
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addItem,
+  decreaseItem,
+  increaseItem,
+  removeItem,
+} from "../../features/cartSlice/cartSlice";
+import { selectCart } from "../../app/store";
 
 import styles from "../../styles/CardProduct.module.css";
 import { TiStarFullOutline } from "react-icons/ti";
 import { FaUser } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
-import { useCart } from "../../context/CartProvider";
 import { MdDelete } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
 import { IoMdRemove } from "react-icons/io";
 import { productQuantity } from "../helpers/helpers";
 
 const CardProduct = ({ item }) => {
-  const [state, dispatch] = useCart();
-
-  const clickHandler = (data) => {
-    dispatch({ type: data, payload: item });
-  };
+  const state = useSelector(selectCart);
+  const dispatch = useDispatch();
 
   const quantity = productQuantity(state, item.id);
 
@@ -48,14 +52,14 @@ const CardProduct = ({ item }) => {
         <div className={styles.product_btn_Container}>
           {quantity === 0 ? (
             <span
-              onClick={() => clickHandler("ADD_ITEM")}
+              onClick={() => dispatch(addItem(item))}
               className={styles.product_buy_btn}
             >
               <FaShoppingCart fontSize="1.1rem" />
             </span>
           ) : (
             <span
-              onClick={() => clickHandler("INCREASE_ITEM")}
+              onClick={() => dispatch(increaseItem(item))}
               className={styles.product_buy_btn}
             >
               <IoMdAdd fontSize="1.1rem" />
@@ -68,7 +72,7 @@ const CardProduct = ({ item }) => {
 
           {quantity === 1 && (
             <span
-              onClick={() => clickHandler("REMOVE_ITEM")}
+              onClick={() => dispatch(removeItem(item))}
               className={styles.product_buy_btn}
             >
               <MdDelete fontSize="1.1rem" />
@@ -77,7 +81,7 @@ const CardProduct = ({ item }) => {
 
           {quantity > 1 && (
             <span
-              onClick={() => clickHandler("DECREASE_ITEM")}
+              onClick={() => dispatch(decreaseItem(item))}
               className={styles.product_buy_btn}
             >
               <IoMdRemove fontSize="1.1rem" />

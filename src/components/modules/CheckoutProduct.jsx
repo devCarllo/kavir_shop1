@@ -1,3 +1,10 @@
+import {
+  addItem,
+  decreaseItem,
+  increaseItem,
+  removeItem,
+} from "../../features/cartSlice/cartSlice";
+
 import styles from "../../styles/CheckoutProduct.module.css";
 import { FaShoppingCart } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -5,10 +12,6 @@ import { IoMdAdd } from "react-icons/io";
 import { IoMdRemove } from "react-icons/io";
 
 const CheckoutProduct = ({ state, dispatch }) => {
-  const clickHandler = (data) => {
-    dispatch({ type: data, payload: state });
-  };
-
   return (
     <div className={styles.checkoutProduct_container}>
       <div className={styles.checkoutProduct_wrapper}>
@@ -29,14 +32,14 @@ const CheckoutProduct = ({ state, dispatch }) => {
         <div className={styles.checkout_btn_Container}>
           {state.quantity === 0 ? (
             <span
-              onClick={() => clickHandler("ADD_ITEM")}
+              onClick={() => dispatch(addItem(state))}
               className={styles.checkout_buy_btn}
             >
               <FaShoppingCart fontSize="1.1rem" />
             </span>
           ) : (
             <span
-              onClick={() => clickHandler("INCREASE_ITEM")}
+              onClick={() => dispatch(increaseItem(state))}
               className={styles.checkout_buy_btn}
             >
               <IoMdAdd fontSize="1.1rem" />
@@ -49,7 +52,7 @@ const CheckoutProduct = ({ state, dispatch }) => {
 
           {state.quantity === 1 && (
             <span
-              onClick={() => clickHandler("REMOVE_ITEM")}
+              onClick={() => dispatch(removeItem(state))}
               className={styles.checkout_buy_btn}
             >
               <MdDelete fontSize="1.1rem" />
@@ -58,7 +61,7 @@ const CheckoutProduct = ({ state, dispatch }) => {
 
           {state.quantity > 1 && (
             <span
-              onClick={() => clickHandler("DECREASE_ITEM")}
+              onClick={() => dispatch(decreaseItem(state))}
               className={styles.checkout_buy_btn}
             >
               <IoMdRemove fontSize="1.1rem" />

@@ -42,16 +42,14 @@ const getQuery = (searchParams) => {
   return query;
 };
 
-const sumProducts = (product) => {
-  const itemsCounter = product.reduce((acc, cur) => acc + cur.quantity, 0);
-
-  const totalPrice = product
+const sumPrice = (product) => {
+  return product
     .reduce((acc, cur) => acc + cur.price * cur.quantity, 0)
     .toFixed(2);
-  return {
-    itemsCounter,
-    totalPrice,
-  };
+};
+
+const sumQuantity = (product) => {
+  return product.reduce((acc, cur) => acc + cur.quantity, 0);
 };
 
 const productQuantity = (state, id) => {
@@ -68,6 +66,7 @@ export {
   filterProduct,
   createQuery,
   getQuery,
-  sumProducts,
+  sumPrice,
+  sumQuantity,
   productQuantity,
 };

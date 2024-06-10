@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../../context/CartProvider";
+import { useSelector } from "react-redux";
+import { selectCart } from "../../app/store";
 
 import Search from "../modules/Search";
 
@@ -9,7 +10,7 @@ import { IoSearch } from "react-icons/io5";
 import { FiShoppingBag } from "react-icons/fi";
 
 const Layout = ({ children, searchValue, setSearchValue, setQuery }) => {
-  const [state] = useCart();
+  const state = useSelector(selectCart);
   const inputRef = useRef();
 
   const searchFocusHandler = () => {
@@ -38,12 +39,11 @@ const Layout = ({ children, searchValue, setSearchValue, setQuery }) => {
         </div>
 
         <div className={styles.header_basket_container}>
-          {state.itemsCounter > 0 && (
+          {state?.itemsCounter > 0 && (
             <span className={styles.header_items_Counter}>
               {state.itemsCounter}
             </span>
           )}
-
           <Link to="/checkout" className={styles.header_basket}>
             <FiShoppingBag fontSize="2rem" />
           </Link>

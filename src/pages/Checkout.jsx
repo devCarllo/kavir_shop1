@@ -1,18 +1,21 @@
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { checkOut } from "../features/cartSlice/cartSlice";
+import { selectCart } from "../app/store";
 
 import Layout from "../components/layout/Layout";
 import CheckoutProduct from "../components/modules/CheckoutProduct";
-import { useCart } from "../context/CartProvider";
 
 import styles from "../styles/Checkout.module.css";
 
 const Checkout = () => {
-  const [state, dispatch] = useCart();
+  const state = useSelector(selectCart);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const checkOutHandler = () => {
     if (state.itemsCounter) {
-      dispatch({ type: "CHECKOUT" });
+      dispatch(checkOut());
 
       navigate("/purchase");
     }
@@ -40,7 +43,7 @@ const Checkout = () => {
 
               <span className={styles.checkout_pricing_check}>
                 وضعیت :{" "}
-                <span>{!!state.checkOut ? "پرداخت شده" : "پرداخت نشده"}</span>
+                <span>{state.checkOut ? "پرداخت شده" : "پرداخت نشده"}</span>
               </span>
             </div>
 

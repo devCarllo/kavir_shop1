@@ -6,20 +6,29 @@ import {
   searchProduct,
 } from "../components/helpers/helpers";
 
-import { useProducts } from "../context/ProductsProvider";
+import { useSelector, useDispatch } from "react-redux";
+import { selectProducts } from "../app/store";
+import { fetchProducts } from "../features/productsSlice/productsSlice";
+
 import CardProduct from "../components/modules/CardProduct";
 import Layout from "../components/layout/Layout";
 import Loader from "../components/helpers/Loader";
-
-import styles from "../styles/ProductsPage.module.css";
 import Category from "../components/modules/Category";
 
+import styles from "../styles/ProductsPage.module.css";
+
 const ProductsPage = () => {
-  const products = useProducts();
+  const { products, isLoading } = useSelector(selectProducts);
+  const dispatch = useDispatch();
+
   const [displayProducts, setDisplayProducts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [query, setQuery] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
   useEffect(() => {
     setDisplayProducts(products);
@@ -48,7 +57,7 @@ const ProductsPage = () => {
           <Category setQuery={setQuery} query={query} />
 
           <div className={styles.products_container}>
-            {!displayProducts.length && <Loader />}
+            {isLoading && <Loader />}
 
             {displayProducts.map((item) => (
               <CardProduct item={item} key={item.id} />
